@@ -23,7 +23,49 @@ header{
 header i{
     color: #caf0f8;
 }
+.input{
+    display: flex;
+    flex-direction: column;
+    background-color: #e6ccb2;
+    height: 100%;
+    width: 150%;
+    padding-left: 15px;
+    gap: 40px;
+    padding-top: 50px;
+}
+.form-input{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    color: #001d3d;
+    font-size: 20px;
+    font-weight: bold;
+}
 
+input[type=text], [type=number]{
+    padding: 2px;
+    background-color: #e6ccb2;
+    border: none;
+    border-bottom: 1px solid #7f5539;
+    color: #001d3d;
+}
+
+.submit-book{
+    display: flex;
+    justify-content: center;
+}
+input[type=button]{
+    width: 50%;
+    background-color: #ddb892;
+    border: none;
+    padding: 10px;
+}
+input[type=button]:hover{
+    background-color: #cb997e;
+}
+input[type=button]:active{
+    background-color: #b08968;
+}
 
 
 
