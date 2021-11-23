@@ -28,7 +28,7 @@ header i{
     flex-direction: column;
     background-color: #e6ccb2;
     height: 100%;
-    width: 150%;
+    width: 450px;
     padding-left: 15px;
     gap: 40px;
     padding-top: 50px;
@@ -72,6 +72,13 @@ input[type=button]:active{
     height: 30px;
 }
 
+
+
+
+.content-wrapper{
+    display: flex;
+
+}
 
 
 
