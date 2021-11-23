@@ -1,3 +1,6 @@
+let myLibrary = [];
+
+
 function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
@@ -15,6 +18,9 @@ function Book(title, author, pages, read) {
         return this.title + " by " + this.author + ", " + this.pages  + " pages, " + this.hasRead
   }
 
+  function addBookToLibrary() {
+      
+  }
   const theHobbit = new Book('The Hobbit', 'J.R.R Tolkien', '295', false);
   const fakeBook = new Book('Fake Book', 'Jacob Crowe', '69', true);
   const fakerBook = new Book('Faker Book', 'Jacobo Crother', '67', false);
