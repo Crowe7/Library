@@ -66,7 +66,11 @@ input[type=button]:hover{
 input[type=button]:active{
     background-color: #b08968;
 }
-
+.checkbox{
+    display: flex;
+    width: 30px;
+    height: 30px;
+}
 
 
 
