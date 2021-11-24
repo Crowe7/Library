@@ -49,6 +49,7 @@ input[type=text], [type=number]{
     border-bottom: 1px solid #7f5539;
     color: #001d3d;
     outline: none;
+    font-size: 20px;
 }
 
 .submit-book{
@@ -71,13 +72,72 @@ input[type=button]:active{
     width: 30px;
     height: 30px;
 }
+.card-wrapper{
+    padding: 10px 40px;
+}
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 8px 0 #7f5539;
+    transition: 0.3s;
+    padding: 20px;
+    height: 300px;
+    width: 250px;
+    background-color: 	#f2dcb1;
+}
+.card:hover {
+    box-shadow: 0 8px 16px 0 #5b3d29;
+}
+.title{
+    text-decoration: underline;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    word-break: break-word;
+    
+}
+.card-button{
+    display: flex;
+    gap: 8px;
+}
+#readToggle{
+    padding: 10px 30px;
+    border: 1px solid #f2dcb1;
+}
+#readToggle:hover{
+    border: 1px solid #5b3d29;
+}
+#delete{
+    padding: 0px 20px;
+    background-color: #be8f3c;
+    border-color: #be8f3c;
+    border: none;
+}
+#delete:hover{
+    border: 1px solid #5b3d29;
+}
+
+
+
+
+.on{
+    background-color: #dc8920;
+}
+.off{
+     background-color: #be8f3c;
+}
+
+
 
 
 
 
 .content-wrapper{
     display: flex;
-
 }
 
 
