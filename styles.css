@@ -48,6 +48,7 @@ input[type=text], [type=number]{
     border: none;
     border-bottom: 1px solid #7f5539;
     color: #001d3d;
+    outline: none;
 }
 
 .submit-book{
@@ -67,7 +68,6 @@ input[type=button]:active{
     background-color: #b08968;
 }
 .checkbox{
-    display: flex;
     width: 30px;
     height: 30px;
 }
