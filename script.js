@@ -41,6 +41,22 @@ function readToggle() {
         readButton.textContent = "READ";
     }
   }
+
+
+let modal = document.getElementById("modalID");
+let closeButton = document.getElementById("no");
+closeButton.addEventListener('click', () => {
+    modal.style.display = 'none';
+});
+
+//set this button when a new card is made instead of just declaring it here!
+let modalButton = document.getElementById("delete");
+modalButton.addEventListener('click', () => {
+    modal.style.display = 'block';
+});
+
+
+
   /*                 <div class="card">
                     <div class="container">
                         <h2 class="title">The Hobbit</h2>
