@@ -1,5 +1,6 @@
+const fakeBook = new Book('Fake Book', 'Jacob Crowe', '69', true);
 const theHobbit = new Book('The Hobbit', 'J.R.R Tolkien', '295', false);
-let myLibrary = [theHobbit];
+let myLibrary = [theHobbit, fakeBook];
 
 
 
@@ -11,14 +12,13 @@ function Book(title, author, pages, read) {
     this.indexNum = null;
   }
 
-  Book.prototype.info = function() {
+  Book.prototype.read = function() {
     if(this.hasRead === false) {
-        this.hasRead = 'not read yet'
+        this.hasRead = true;
     }
     else {
-        this.hasRead = 'read'
+        this.hasRead = false
     }
-        return this.title + " by " + this.author + ", " + this.pages  + " pages, " + this.hasRead
   }
 //assigns a number based on where book is in array
 Book.prototype.index = function() {
@@ -39,17 +39,9 @@ function addBookToLibrary(e) {
 
 // ADD THE EVENT LISTEN TO EACH BUTTON AS THEY ARE PUT ON
 //read as to how to set with new elements https://stackoverflow.com/questions/35349212/select-an-html-element-created-with-js-in-js
-let readButton = document.querySelector('#readToggle');
-readButton.addEventListener('click', readToggle);
-function readToggle() {
-    readButton.classList.toggle('off');
-    if(readButton.classList.contains("off")) {
-        readButton.textContent = "NOT READ";
-    }
-    else {
-        readButton.textContent = "READ";
-    }
-  }
+//let readButton = document.querySelector('#readToggle');
+//readButton.addEventListener('click', readToggle);
+
 
 // MODAL LOGIC
 let modal = document.getElementById("modalID");
@@ -129,6 +121,41 @@ function addCard(book){
     pages.innerText = book.pages + " pages";
     container.appendChild(pages);
 
-}
+    //TODO ADD MODAL DELETE AND READ BUTTONS HERE
+    let buttonContainer = document.createElement('div');
+    buttonContainer.classList.add('card-button');
+    container.appendChild(buttonContainer); 
 
+
+    let read = document.createElement('button');
+    read.classList.add('on', 'off');
+    read.setAttribute('id', 'readToggle');
+    if(book.hasRead === false) {
+        read.innerText = 'NOT READ'
+    }
+    else {
+        read.innerText = 'READ';
+        read.classList.toggle('off');
+    }
+    
+    read.addEventListener('click', () => {
+        readToggle(book, read);
+    });
+    buttonContainer.appendChild(read);
+
+}
+//TODO ADD THIS TO THE SUBMIT FROM
 makeCards();
+
+
+function readToggle(book, read){
+    book.read();
+    if(book.hasRead === false) {
+        read.innerText = 'NOT READ'
+        read.classList.toggle('off');
+    }
+    else {
+        read.innerText = 'READ';
+        read.classList.toggle('off');
+    }
+}
