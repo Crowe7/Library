@@ -50,26 +50,6 @@ closeButton.addEventListener('click', () => {
     modal.style.display = 'none';
 });
 
-//set this button when a new card is made instead of just declaring it here!
-let modalButton = document.getElementById("delete");
-modalButton.addEventListener('click', () => {
-    modal.style.display = 'block';
-});
-
-
-
-  /*                 <div class="card">
-                    <div class="container">
-                        <h2 class="title">The Hobbit</h2>
-                        <h4>J.R.R Tolkien</h4>
-                        <p>295 pages</p>
-                        <div class="card-button">
-                            <button class="on" id="readToggle" type="button">READ</button>
-                            <button id="delete" type="button">DELETE</button>
-                        </div>
-                    </div>
-                </div> */ 
-
 
 
 
@@ -142,6 +122,17 @@ function addCard(book){
         readToggle(book, read);
     });
     buttonContainer.appendChild(read);
+
+
+    // TODO DELETE FUNCTION
+    let deleteButton = document.createElement('button');
+    deleteButton.setAttribute('id', 'delete');
+    deleteButton.innerText = "DELETE";
+    buttonContainer.appendChild(deleteButton)
+
+    deleteButton.addEventListener('click', () => {
+        modal.style.display = 'block';
+    });
 
 }
 //TODO ADD THIS TO THE SUBMIT FROM
