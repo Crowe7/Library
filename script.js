@@ -17,14 +17,12 @@ function Book(title, author, pages, read) {
         return this.title + " by " + this.author + ", " + this.pages  + " pages, " + this.hasRead
   }
 
-  function addBookToLibrary() {
-    
+  function addBookToLibrary(e) {
+    e.preventDefault();
+     let book = makeBook();
+     myLibrary.push(book);
+     console.log(myLibrary);
   }
-  const theBook = new Book('The Hobbit', 'J.R.R Tolkien', '295', false);
-  const theBook2 = new Book('Fake Book', 'Jacob Crowe', '69', true);
-  const fakerBook = new Book('Faker Book', 'Jacobo Crother', '67', false);
-
-
 // ADD THE EVENT LISTEN TO EACH BUTTON AS THEY ARE PUT ON
 //read as to how to set with new elements https://stackoverflow.com/questions/35349212/select-an-html-element-created-with-js-in-js
 let readButton = document.querySelector('#readToggle');
@@ -69,8 +67,7 @@ modalButton.addEventListener('click', () => {
 
 
 
-function makeBook(e) {
-    e.preventDefault();
+function makeBook() {
     let form = document.querySelector('#input');
     let newBook = [];
     for(i = 0; i < 3; i++) {
@@ -79,8 +76,10 @@ function makeBook(e) {
       newBook.push(document.querySelector('#read').checked)
 
     console.log(newBook);
-    return newBook;
+    let book = new Book(newBook[0], newBook[1], newBook[2], newBook[3]);
+    return book;
 }
 let submitButton = document.querySelector('#input');
-submitButton.addEventListener('submit', makeBook);
+submitButton.addEventListener('submit', addBookToLibrary);
 
+//make sure to put the e.prevent deafault on whatever is called on the button at the end
