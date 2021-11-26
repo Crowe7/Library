@@ -15,25 +15,25 @@
     </header>
     <main class="flex-wrapper">
         <div class="content-wrapper">
-            <form class="input" action="">
+            <form id="input" class="input" action="">
                 <div class="form-input">
                     <label for="title">What is the title of the book?</label>
-                    <input type="text" id="title" required maxlength="40" />
+                    <input type="text" id="title" required maxlength="40" >
                 </div>
                 <div class="form-input">
                     <label for="author">Who is the author of the book?</label>
-                    <input type="text" id="author" required maxlength="20" />
+                    <input type="text" id="author" required maxlength="20" >
                 </div>
                 <div class="form-input">
                     <label for="pages">How many pages is the book?</label>
-                    <input type="number" id="pages" required min="0" max="9999" />
+                    <input type="number" id="pages" required min="0" max="4" >
                 </div>
                 <div class="form-input">
                     <label for="read">Have you read the book?</label>
-                    <input class="checkbox" type="checkbox" id="read" required/>
+                    <input class="checkbox" type="checkbox" id="read"/>
                 </div>
                 <div class="submit-book">
-                    <input type="button" value="SUBMIT BOOK" id="submit-book">
+                    <input type="submit" value="SUBMIT BOOK" id="submitBook">
                 </div>
             </form>
             <div class="card-wrapper">

@@ -56,16 +56,16 @@ input[type=text], [type=number]{
     display: flex;
     justify-content: center;
 }
-input[type=button]{
+input[type=submit]{
     width: 50%;
     background-color: #ddb892;
     border: none;
     padding: 10px;
 }
-input[type=button]:hover{
+input[type=submit]:hover{
     background-color: #cb997e;
 }
-input[type=button]:active{
+input[type=submit]:active{
     background-color: #b08968;
 }
 .checkbox{

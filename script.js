@@ -18,14 +18,11 @@ function Book(title, author, pages, read) {
   }
 
   function addBookToLibrary() {
-
+    
   }
-  const theHobbit = new Book('The Hobbit', 'J.R.R Tolkien', '295', false);
-  const fakeBook = new Book('Fake Book', 'Jacob Crowe', '69', true);
+  const theBook = new Book('The Hobbit', 'J.R.R Tolkien', '295', false);
+  const theBook2 = new Book('Fake Book', 'Jacob Crowe', '69', true);
   const fakerBook = new Book('Faker Book', 'Jacobo Crother', '67', false);
-  console.log(theHobbit.info());
-  console.log(fakeBook.info());
-  console.log(fakerBook.info());
 
 
 // ADD THE EVENT LISTEN TO EACH BUTTON AS THEY ARE PUT ON
@@ -68,3 +65,22 @@ modalButton.addEventListener('click', () => {
                         </div>
                     </div>
                 </div> */ 
+
+
+
+
+function makeBook(e) {
+    e.preventDefault();
+    let form = document.querySelector('#input');
+    let newBook = [];
+    for(i = 0; i < 3; i++) {
+        newBook.push(form[i].value);
+    }
+      newBook.push(document.querySelector('#read').checked)
+
+    console.log(newBook);
+    return newBook;
+}
+let submitButton = document.querySelector('#input');
+submitButton.addEventListener('submit', makeBook);
+
