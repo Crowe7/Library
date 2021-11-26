@@ -20,12 +20,11 @@ function Book(title, author, pages, read) {
     }
         return this.title + " by " + this.author + ", " + this.pages  + " pages, " + this.hasRead
   }
-
+//assigns a number based on where book is in array
 Book.prototype.index = function() {
     for(i = 0; i < myLibrary.length; i++) {
         if(myLibrary[i].title === this.title) {
-          return this.indexNum = i;
-            
+          return this.indexNum = i;            
         }
     }
 }
@@ -37,8 +36,7 @@ function addBookToLibrary(e) {
      console.log(myLibrary);
 }
 
-theHobbit.index();
-console.log(theHobbit);
+
 // ADD THE EVENT LISTEN TO EACH BUTTON AS THEY ARE PUT ON
 //read as to how to set with new elements https://stackoverflow.com/questions/35349212/select-an-html-element-created-with-js-in-js
 let readButton = document.querySelector('#readToggle');
@@ -99,21 +97,38 @@ let submitButton = document.querySelector('#input');
 submitButton.addEventListener('submit', addBookToLibrary);
 
 //make sure to put the e.prevent deafault on whatever is called on the button at the end
-let daw = 2;
-function makeCard(){
+function makeCards() {
+    for(i = 0; i < myLibrary.length; i++) {
+        addCard(myLibrary[i]);
+    }
+}
+
+
+function addCard(book){
     let dom = document.querySelector('.card-wrapper')
 
     let card = document.createElement('div');
     card.classList.add('card');
-    card.setAttribute('id', daw);
+    card.setAttribute('id', book.index());
     dom.appendChild(card);
 
     let container = document.createElement('div');
     container.classList.add('container');
     card.appendChild(container);
 
+    let title = document.createElement('h2');
+    title.classList.add('title');
+    title.innerText = book.title;
+    container.appendChild(title)
 
+    let author = document.createElement('h4');
+    author.innerText = book.author;
+    container.appendChild(author);
+
+    let pages = document.createElement('p');
+    pages.innerText = book.pages + " pages";
+    container.appendChild(pages);
 
 }
 
-makeCard();
+makeCards();
