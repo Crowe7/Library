@@ -1,7 +1,6 @@
 const fakeBook = new Book('Fake Book', 'Jacob Crowe', '69', true);
 const theHobbit = new Book('The Hobbit', 'J.R.R Tolkien', '295', false);
-let myLibrary = [theHobbit, fakeBook];
-
+let myLibrary = [];
 
 
 function Book(title, author, pages, read) {
@@ -17,7 +16,7 @@ function Book(title, author, pages, read) {
         this.hasRead = true;
     }
     else {
-        this.hasRead = false
+        this.hasRead = false;
     }
   }
 //assigns a number based on where book is in array
@@ -29,18 +28,18 @@ Book.prototype.index = function() {
     }
 }
 
-function addBookToLibrary(e) {
+function submitBook(e) {
     e.preventDefault();
-     let book = makeBook();
-     myLibrary.push(book);
-     console.log(myLibrary);
+    addBookToLibrary();
+    // adds the last element to the dom
+    addCard(myLibrary.reverse()[0]);
 }
 
+function addBookToLibrary() {
+     let book = makeBook();
+     myLibrary.push(book);
+}
 
-// ADD THE EVENT LISTEN TO EACH BUTTON AS THEY ARE PUT ON
-//read as to how to set with new elements https://stackoverflow.com/questions/35349212/select-an-html-element-created-with-js-in-js
-//let readButton = document.querySelector('#readToggle');
-//readButton.addEventListener('click', readToggle);
 
 
 // MODAL LOGIC
@@ -61,14 +60,13 @@ function makeBook() {
     }
       newBook.push(document.querySelector('#read').checked)
 
-    console.log(newBook);
     let book = new Book(newBook[0], newBook[1], newBook[2], newBook[3]);
     return book;
 }
 let submitButton = document.querySelector('#input');
-submitButton.addEventListener('submit', addBookToLibrary);
+submitButton.addEventListener('submit', submitBook);
 
-//make sure to put the e.prevent deafault on whatever is called on the button at the end
+//save this for local storage
 function makeCards() {
     for(i = 0; i < myLibrary.length; i++) {
         addCard(myLibrary[i]);
@@ -81,7 +79,6 @@ function addCard(book){
 
     let card = document.createElement('div');
     card.classList.add('card');
-    card.setAttribute('id', book.index());
     dom.appendChild(card);
 
     let container = document.createElement('div');
@@ -135,9 +132,6 @@ function addCard(book){
     });
 
 }
-//TODO ADD THIS TO THE SUBMIT FROM
-makeCards();
-
 
 function readToggle(book, read){
     book.read();
@@ -149,4 +143,7 @@ function readToggle(book, read){
         read.innerText = 'READ';
         read.classList.toggle('off');
     }
+    console.log(book);
 }
+
+

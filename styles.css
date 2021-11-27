@@ -50,6 +50,7 @@ input[type=text], [type=number]{
     color: #001d3d;
     outline: none;
     font-size: 20px;
+
 }
 
 .submit-book{
@@ -77,6 +78,7 @@ input[type=submit]:active{
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
+    max-width: 73%;
 }
 .card {
     display: flex;
