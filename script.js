@@ -1,5 +1,3 @@
-const fakeBook = new Book('Fake Book', 'Jacob Crowe', '69', true);
-const theHobbit = new Book('The Hobbit', 'J.R.R Tolkien', '295', false);
 let myLibrary = [];
 
 
@@ -19,14 +17,6 @@ function Book(title, author, pages, read) {
         this.hasRead = false;
     }
   }
-//assigns a number based on where book is in array
-Book.prototype.index = function() {
-    for(i = 0; i < myLibrary.length; i++) {
-        if(myLibrary[i].title === this.title) {
-          return this.indexNum = i;            
-        }
-    }
-}
 
 function submitBook(e) {
     e.preventDefault();
@@ -37,11 +27,6 @@ function submitBook(e) {
 }
 let submitButton = document.querySelector('#input');
 submitButton.addEventListener('submit', submitBook);
-
-
-
-
-
 
 // LOCAL STORAGE 
 
