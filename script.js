@@ -116,7 +116,6 @@ function addCard(book){
     buttonContainer.classList.add('card-button');
     container.appendChild(buttonContainer); 
 
-
     let read = document.createElement('button');
     read.classList.add('on', 'off');
     read.setAttribute('id', 'readToggle');
@@ -132,8 +131,6 @@ function addCard(book){
         readToggle(book, read);
     });
     buttonContainer.appendChild(read);
-
-
 
     let deleteButton = document.createElement('button');
     deleteButton.setAttribute('id', 'delete');
