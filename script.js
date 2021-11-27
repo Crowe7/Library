@@ -46,23 +46,30 @@ submitButton.addEventListener('submit', submitBook);
 // LOCAL STORAGE 
 
 function makeCards() {
-    myLibrary = JSON.parse(localStorage.getItem('library'));
-    if(myLibrary == null) {
-       return myLibrary = [];
+    let localBook = JSON.parse(localStorage.getItem('library'));
+    if(localBook == null) {
+       return;
     }
     else {
+        makeLocalBooks(localBook);
+        console.log(myLibrary);
         for(i = 0; i < myLibrary.length; i++) {
             addCard(myLibrary[i]);
         }
     }
-    console.log(myLibrary);
 }
 makeCards();
-console.log(localStorage)
+//had to turn json parsed storage into books
+function makeLocalBooks(localBook) {
+    for(i = 0; i < localBook.length; i++) {
+        console.log(localBook[i]);
+        let book = new Book(localBook[i].title, localBook[i].author, localBook[i].pages, localBook[i].hasRead);
+        myLibrary.push(book);
+    }
+}
 
 
-
-
+// MAKES NEW CARDS INTO BOOKS
 function addBookToLibrary() {
     let book = makeBook();
     myLibrary.push(book);
@@ -142,6 +149,7 @@ function addCard(book){
 // CARD BUTTON LOGIC
 function readToggle(book, read){
     book.read();
+    console.log(book);
     if(book.hasRead === false) {
         read.innerText = 'NOT READ'
         read.classList.toggle('off');
@@ -150,6 +158,7 @@ function readToggle(book, read){
         read.innerText = 'READ';
         read.classList.toggle('off');
     }
+    localStorage.setItem('library', JSON.stringify(myLibrary));
 }
 
 function deleteBook(card, book) {
