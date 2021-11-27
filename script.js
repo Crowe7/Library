@@ -33,25 +33,40 @@ function submitBook(e) {
     addBookToLibrary();
     // adds the last element to the dom
     addCard(myLibrary.reverse()[0]);
+    localStorage.setItem('library', JSON.stringify(myLibrary));
 }
+let submitButton = document.querySelector('#input');
+submitButton.addEventListener('submit', submitBook);
+
+
+
+
+
+
+// LOCAL STORAGE 
+
+function makeCards() {
+    myLibrary = JSON.parse(localStorage.getItem('library'));
+    if(myLibrary == null) {
+       return myLibrary = [];
+    }
+    else {
+        for(i = 0; i < myLibrary.length; i++) {
+            addCard(myLibrary[i]);
+        }
+    }
+    console.log(myLibrary);
+}
+makeCards();
+console.log(localStorage)
+
+
+
 
 function addBookToLibrary() {
-     let book = makeBook();
-     myLibrary.push(book);
+    let book = makeBook();
+    myLibrary.push(book);
 }
-
-
-
-// MODAL LOGIC
-let modal = document.getElementById("modalID");
-let closeButton = document.getElementById("no");
-closeButton.addEventListener('click', () => {
-    modal.style.display = 'none';
-    document.querySelector('#yes').remove();  
-});
-
-
-
 
 function makeBook() {
     let form = document.querySelector('#input');
@@ -64,16 +79,6 @@ function makeBook() {
     let book = new Book(newBook[0], newBook[1], newBook[2], newBook[3]);
     return book;
 }
-let submitButton = document.querySelector('#input');
-submitButton.addEventListener('submit', submitBook);
-
-//save this for local storage
-function makeCards() {
-    for(i = 0; i < myLibrary.length; i++) {
-        addCard(myLibrary[i]);
-    }
-}
-
 
 function addCard(book){
     let dom = document.querySelector('.card-wrapper')
@@ -99,7 +104,7 @@ function addCard(book){
     pages.innerText = book.pages + " pages";
     container.appendChild(pages);
 
-    //TODO ADD MODAL DELETE AND READ BUTTONS HERE
+    //MODAL DELETE AND READ BUTTONS HERE
     let buttonContainer = document.createElement('div');
     buttonContainer.classList.add('card-button');
     container.appendChild(buttonContainer); 
@@ -122,21 +127,19 @@ function addCard(book){
     buttonContainer.appendChild(read);
 
 
-    // TODO DELETE FUNCTION
+
     let deleteButton = document.createElement('button');
     deleteButton.setAttribute('id', 'delete');
     deleteButton.innerText = "DELETE";
     buttonContainer.appendChild(deleteButton)
-
+    // ties the yes button onto the specific card 
     deleteButton.addEventListener('click', () => {
-        makeYes(card);
+        makeYes(card, book);
         modal.style.display = 'block';
     });
 
-
-
 }
-
+// CARD BUTTON LOGIC
 function readToggle(book, read){
     book.read();
     if(book.hasRead === false) {
@@ -149,12 +152,27 @@ function readToggle(book, read){
     }
 }
 
-function deleteBook(card) {
+function deleteBook(card, book) {
     card.remove();
     modal.style.display = 'none';
+    for(i = 0; i < myLibrary.length; i++) {
+        if(myLibrary[i] === book) {
+            myLibrary.splice([i], 1);
+        }
+    }
+    localStorage.setItem('library', JSON.stringify(myLibrary));
 }
 
-function makeYes(card) {
+// MODAL LOGIC
+let modal = document.getElementById("modalID");
+let closeButton = document.getElementById("no");
+closeButton.addEventListener('click', () => {
+    modal.style.display = 'none';
+    document.querySelector('#yes').remove();  
+});
+
+
+function makeYes(card, book) {
 yesButton = document.createElement('button');
 yesButton.setAttribute('id', 'yes')
 yesButton.innerHTML = ('YES');
@@ -164,7 +182,7 @@ let modalContainer = document.querySelector('.yes-no')
 modalContainer.appendChild(yesButton);
 
 yesButton.addEventListener('click', () => {
-    deleteBook(card);
+    deleteBook(card, book);
     yesButton.remove();
 });
 }
