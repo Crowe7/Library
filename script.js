@@ -47,6 +47,7 @@ let modal = document.getElementById("modalID");
 let closeButton = document.getElementById("no");
 closeButton.addEventListener('click', () => {
     modal.style.display = 'none';
+    document.querySelector('#yes').remove();  
 });
 
 
@@ -128,8 +129,11 @@ function addCard(book){
     buttonContainer.appendChild(deleteButton)
 
     deleteButton.addEventListener('click', () => {
+        makeYes(card);
         modal.style.display = 'block';
     });
+
+
 
 }
 
@@ -143,7 +147,24 @@ function readToggle(book, read){
         read.innerText = 'READ';
         read.classList.toggle('off');
     }
-    console.log(book);
 }
 
+function deleteBook(card) {
+    card.remove();
+    modal.style.display = 'none';
+}
 
+function makeYes(card) {
+yesButton = document.createElement('button');
+yesButton.setAttribute('id', 'yes')
+yesButton.innerHTML = ('YES');
+
+let modalContainer = document.querySelector('.yes-no')
+
+modalContainer.appendChild(yesButton);
+
+yesButton.addEventListener('click', () => {
+    deleteBook(card);
+    yesButton.remove();
+});
+}
